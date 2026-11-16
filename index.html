@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pokédex Kanto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="topo__bola" aria-hidden="true"></div>
+    <div>
+      <h1>Pokédex Kanto</h1>
+      <p>Os 151 Pokémon da primeira geração, direto da PokéAPI.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="controles">
+      <input id="busca" type="search" placeholder="Buscar pelo nome, por exemplo: pikachu" aria-label="Buscar Pokémon pelo nome">
+      <button id="btnFavoritos" type="button" aria-pressed="false">♥ Favoritos (<span id="qtdFav">0</span>)</button>
+    </section>
+
+    <p id="status" role="status"></p>
+
+    <!-- Os cards entram aqui, criados pelo JavaScript -->
+    <section id="cards" class="grade"></section>
+
+    <button id="btnMais" type="button" class="mais" hidden>Carregar mais</button>
+  </main>
+
+  <footer>Dados fornecidos pela PokéAPI (pokeapi.co). Projeto acadêmico da UniFECAF.</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

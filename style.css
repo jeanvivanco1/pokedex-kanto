@@ -1,0 +1,199 @@
+:root {
+  --tinta: #1f2428;
+  --fundo: #e6ebef;
+  --vermelho: #c62828;
+  --cor: #75756a;
+}
+
+/* Cor de cada tipo, usada nos cards e nas etiquetas */
+[data-tipo="normal"]   { --cor: #75756a; }
+[data-tipo="fire"]     { --cor: #d9481f; }
+[data-tipo="water"]    { --cor: #2f6fd6; }
+[data-tipo="grass"]    { --cor: #3f8f3a; }
+[data-tipo="electric"] { --cor: #b88700; }
+[data-tipo="ice"]      { --cor: #3a9fb5; }
+[data-tipo="fighting"] { --cor: #b03a2e; }
+[data-tipo="poison"]   { --cor: #8e44ad; }
+[data-tipo="ground"]   { --cor: #a8782c; }
+[data-tipo="flying"]   { --cor: #5b7fcf; }
+[data-tipo="psychic"]  { --cor: #d1457f; }
+[data-tipo="bug"]      { --cor: #7a8f1d; }
+[data-tipo="rock"]     { --cor: #8c7a3f; }
+[data-tipo="ghost"]    { --cor: #5b4a8a; }
+[data-tipo="dragon"]   { --cor: #4b3ec2; }
+[data-tipo="dark"]     { --cor: #4a3f3a; }
+[data-tipo="steel"]    { --cor: #5f7f8f; }
+[data-tipo="fairy"]    { --cor: #c4608f; }
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--tinta);
+  font-family: "Nunito", system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+:focus-visible { outline: 3px solid #1b5cff; outline-offset: 2px; }
+
+/* Topo */
+.topo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem clamp(1rem, 4vw, 3rem);
+  background: var(--vermelho);
+  color: #fff;
+  border-bottom: 6px solid var(--tinta);
+}
+.topo h1 {
+  margin: 0 0 .5rem;
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(.95rem, 3.2vw, 1.6rem);
+  line-height: 1.3;
+}
+.topo p { margin: 0; font-weight: 700; }
+
+.topo__bola {
+  position: relative;
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border: 4px solid var(--tinta);
+  border-radius: 50%;
+  background: linear-gradient(#e53935 0 46%, var(--tinta) 46% 54%, #fff 54%);
+}
+.topo__bola::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  translate: -50% -50%;
+  border: 4px solid var(--tinta);
+  border-radius: 50%;
+  background: #fff;
+}
+
+/* Conteúdo e controles */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem clamp(1rem, 4vw, 3rem) 3rem;
+}
+.controles { display: flex; flex-wrap: wrap; gap: .75rem; }
+input, button { font: inherit; color: inherit; }
+
+#busca {
+  flex: 1 1 240px;
+  padding: .7rem .9rem;
+  border: 3px solid var(--tinta);
+  border-radius: 8px;
+  background: #fff;
+}
+#btnFavoritos, .mais {
+  padding: .7rem 1.1rem;
+  border: 3px solid var(--tinta);
+  border-radius: 8px;
+  background: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--tinta);
+}
+#btnFavoritos[aria-pressed="true"] { background: var(--vermelho); color: #fff; }
+.mais { display: block; margin: 2rem auto 0; }
+.mais:disabled { opacity: .5; cursor: wait; }
+
+#status { min-height: 1.5em; margin: 1rem 0; font-weight: 700; }
+
+/* Cards */
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  padding: 1rem;
+  background: #fff;
+  border: 3px solid var(--tinta);
+  border-radius: 12px;
+  box-shadow: 5px 5px 0 var(--cor);
+}
+.card h2 {
+  margin: 0;
+  padding-inline: 2.2rem;
+  text-align: center;
+  font-size: 1.15rem;
+  text-transform: capitalize;
+}
+.card__num {
+  text-align: center;
+  font-family: "Press Start 2P", monospace;
+  font-size: .6rem;
+}
+.card__img {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border: 3px solid var(--tinta);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--cor) 20%, #fff);
+}
+.card__img img { width: 85%; height: 85%; object-fit: contain; }
+
+.tipos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tipo {
+  padding: .15rem .75rem;
+  border-radius: 99px;
+  background: var(--cor);
+  color: #fff;
+  font-size: .85rem;
+  font-weight: 800;
+}
+
+.dados {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: .15rem .75rem;
+  margin: 0;
+  font-size: .92rem;
+}
+.dados dt { font-weight: 700; }
+.dados dd { margin: 0; text-align: right; font-weight: 800; }
+
+.card__fav {
+  position: absolute;
+  top: .45rem;
+  right: .5rem;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: none;
+  color: var(--vermelho);
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+footer {
+  padding: 1.5rem;
+  text-align: center;
+  font-size: .9rem;
+  background: #fff;
+  border-top: 3px solid var(--tinta);
+}
